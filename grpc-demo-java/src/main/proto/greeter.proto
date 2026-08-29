@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcdemo";
+option java_outer_classname = "GreeterProto";
+
+package greeter;
+
+service GreeterService {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc Countdown (CountdownRequest) returns (stream CountdownReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message CountdownRequest {
+  int32 start = 1;
+}
+
+message CountdownReply {
+  int32 current = 1;
+  string message = 2;
+}
